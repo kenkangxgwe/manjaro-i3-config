@@ -30,22 +30,22 @@ mode "$mode_border" {
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Sans 10
+font xft:Noto Sans 8.0
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+semicolon exec --no-startup-id j4-dmenu
+bindsym $mod+semicolon exec --no-startup-id j4-dmenu-desktop
 
 # launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
+# bindsym $mod+z exec --no-startup-id morc_menu
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -53,9 +53,10 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+# exec --no-startup-id pulseaudio
+# exec --no-startup-id pasystray
+# exec --no-startup-id pa-applet
+# bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -64,20 +65,20 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+# bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F1 exec google-chrome-stable
-bindsym $mod+F2 exec gvim
-bindsym $mod+e exec pcmanfm
-bindsym $mod+Shift+e exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Shift+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Ctrl+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym $mod+F2 exec emacs
+# bindsym $mod+e exec pcmanfm
+# bindsym $mod+Shift+e exec ranger
+# bindsym $mod+Shift+F3 exec gksu pcmanfm
+# bindsym $mod+F5 exec terminal -e 'mocp'
+# bindsym $mod+t exec --no-startup-id pkill compton
+# bindsym $mod+Shift+t exec --no-startup-id compton -b
+# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+# bindsym Print exec --no-startup-id i3-scrot
+# bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+# bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+# bindsym $mod+Ctrl+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -286,13 +287,13 @@ bindsym $mod+Ctrl+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit sh
 bindsym $mod+x mode "$mode_system"
 set $mode_system (l)ock, l(o)gout, s(w)itch_user, (s)uspend, (h)ibernate, (r)eboot, sh(u)tdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym w exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym o exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym u exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id $HOME/projects/i3exit/blurlock, mode "default"
+    bindsym s exec --no-startup-id $HOME/projects/i3exit/i3exit suspend, mode "default"
+    bindsym w exec --no-startup-id $HOME/projects/i3exit/i3exit switch_user, mode "default"
+    bindsym o exec --no-startup-id $HOME/projects/i3exit/i3exit logout, mode "default"
+    bindsym h exec --no-startup-id $HOME/projects/i3exit/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/projects/i3exit/i3exit reboot, mode "default"
+    bindsym u exec --no-startup-id $HOME/projects/i3exit/i3exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -343,21 +344,23 @@ mode "resize" {
 # bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+# exec --no-startup-id pamac-tray
+# exec --no-startup-id clipit
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
-exec --no-startup-id fcitx 
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
+# exec --no-startup-id fcitx 
+# exec_always --no-startup-id ff-theme-util
+# exec_always --no-startup-id fix_xcursor
+exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id xset r rate 200 30
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
 # Colors are gathered based on the documentation:
@@ -427,7 +430,7 @@ set $i3_color17         #0c0c0c
 
  	bindsym button4 nop
  	bindsym button5 nop
- 	font xft:Noto Sans 10.5
+ 	font xft:Noto Sans 8.0
  	strip_workspace_numbers yes
  
  	colors {
@@ -462,7 +465,7 @@ client.background       $i3_background
 #############################
 
 # Set inner/outer gaps
-gaps inner 0
+gaps inner 3
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
