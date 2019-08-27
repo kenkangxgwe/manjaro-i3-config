@@ -30,7 +30,7 @@ mode "$mode_border" {
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Sans 8.0
+font xft:Noto Sans 12.0
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -72,8 +72,8 @@ bindsym $mod+F2 exec emacs
 # bindsym $mod+Shift+e exec ranger
 # bindsym $mod+Shift+F3 exec gksu pcmanfm
 # bindsym $mod+F5 exec terminal -e 'mocp'
-# bindsym $mod+t exec --no-startup-id pkill compton
-# bindsym $mod+Shift+t exec --no-startup-id compton -b
+bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Shift+t exec --no-startup-id compton -b
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 # bindsym Print exec --no-startup-id i3-scrot
 # bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -90,11 +90,11 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+space floating toggle
 
 # move the currently focused window to the scratchpad
-bindsym $mod+d move scratchpad
+bindsym $mod+m move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+m scratchpad show
+bindsym $mod+d scratchpad show
 
 # change focus
 bindsym $mod+h focus left
@@ -287,7 +287,7 @@ bindsym $mod+Ctrl+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit sh
 bindsym $mod+x mode "$mode_system"
 set $mode_system (l)ock, l(o)gout, s(w)itch_user, (s)uspend, (h)ibernate, (r)eboot, sh(u)tdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/projects/i3exit/blurlock, mode "default"
+    bindsym l exec --no-startup-id $HOME/projects/i3exit/i3exit lock, mode "default"
     bindsym s exec --no-startup-id $HOME/projects/i3exit/i3exit suspend, mode "default"
     bindsym w exec --no-startup-id $HOME/projects/i3exit/i3exit switch_user, mode "default"
     bindsym o exec --no-startup-id $HOME/projects/i3exit/i3exit logout, mode "default"
@@ -345,7 +345,7 @@ mode "resize" {
 
 # Autostart applications
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -355,7 +355,7 @@ exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker $HOME/projects/i3exit/blurlock
+exec --no-startup-id xautolock -corners ---- -time 10 -locker $HOME/projects/i3exit/blurlock
 # exec --no-startup-id fcitx 
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id fix_xcursor
@@ -431,7 +431,7 @@ set $i3_color17         #0c0c0c
 
  	bindsym button4 nop
  	bindsym button5 nop
- 	font xft:Noto Sans 8.0
+ 	font xft:Noto Sans 12.0
  	strip_workspace_numbers yes
  
  	colors {
