@@ -9,15 +9,15 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window none
-new_float normal
+default_border pixel 1
+default_floating_border normal
 
 # Hide borders
 hide_edge_borders none
 
 # change borders
 set $mode_border Borders: (0) none, (1) pixel, (n)ormal
-bindsym $mod+b mode "$mode_border" 
+bindsym $mod+b mode "$mode_border"
 
 mode "$mode_border" {
         bindsym 0 border none
@@ -74,7 +74,7 @@ bindsym $mod+F2 exec emacs
 # bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Shift+t exec --no-startup-id compton -b
-# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 # bindsym Print exec --no-startup-id i3-scrot
 # bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 # bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -109,7 +109,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # Windows Management
-set $mode_windows Windows: (c)lose, (hjkl) focus, (HJKL) move, (VS~) split method, (f)fullscreen, (t)abbed, (s)tacking, (r)split, 
+set $mode_windows Windows: (c)lose, (hjkl) focus, (HJKL) move, (VS~) split method, (f)fullscreen, (t)abbed, (s)tacking, (r)split,
 bindsym $mod+w mode "$mode_windows"
 
 mode "$mode_windows" {
@@ -131,7 +131,7 @@ mode "$mode_windows" {
 # split orientation
         bindsym V split h;exec notify-send 'tile horizontally', mode "default"
         bindsym S split v;exec notify-send 'tile vertically', mode "default"
-        bindsym grave split toggle, mode "default"  
+        bindsym grave split toggle, mode "default"
 
 # toggle fullscreen mode for the focused container
         bindsym f fullscreen toggle, mode "default"
@@ -421,7 +421,7 @@ set $i3_color16         #ffffff
 set $i3_color17         #0c0c0c
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
- bar {
+bar {
  	status_command i3status
  	position bottom
 
@@ -445,8 +445,8 @@ set $i3_color17         #0c0c0c
          active_workspace    $i3_color2  $i3_color3  $i3_color5
          inactive_workspace  $i3_color2  $i3_color3  $i3_color6
          urgent_workspace    $i3_color4  $i3_color5  $i3_color7
-     }
- }
+	}
+}
 
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
@@ -466,8 +466,8 @@ client.background       $i3_background
 #############################
 
 # Set inner/outer gaps
-gaps inner 3
-gaps outer 0
+gaps inner 4
+gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -477,7 +477,7 @@ gaps outer 0
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
